@@ -1,9 +1,9 @@
-body{
+body {
     font-family: 'Hind', sans-serif;
     background-color: #eee;
 }
 
-.row a{
+.row a {
     text-decoration: none;
     color: rgb(51,51,51);
 }
@@ -12,20 +12,22 @@ body{
     padding: 0;
 }
 
-.after-navbar{
-    padding-top:51px;
+.after-navbar {
+    padding-top: 51px;
 }
 
-.navbar-title{
-    margin:0px;
+.navbar-title {
+    margin: 0px;
 }
 
-img{
+img {
     max-width: 100%;
 }
-.img-responsive{
+
+.img-responsive {
     margin: 0 auto;
 }
+
 .jumbotron {
     position: relative;
     background: url("../img/barcelona.jpg") center center;
@@ -33,25 +35,27 @@ img{
     height: 100%;
     background-size: cover;
     overflow: hidden;
-    color:#fff;
+    color: #fff;
     text-align: center;
 }
-.jumbotron hr{
-    width:60%;
+
+.jumbotron hr {
+    width: 60%;
     border-top: 4px solid;
 }
-.background-intro{
-    padding-top:100px;
-    padding-bottom:50px;
-    
-}
-.intro-text{
-    background:rgba(0,0,0,0.8);
+
+.background-intro {
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
-@media (min-width: 768px){
-    .background-intro{
+.intro-text {
+    background: rgba(0,0,0,0.8);
+}
+
+@media (min-width: 768px) {
+    .background-intro {
         padding-top: 300px;
         padding-bottom: 200px;
-    }
+    };
 }
