@@ -50,14 +50,14 @@ var bio = {
     },
     "welcomeMessage": "Welcome to my resumee",
     "skills": ["HTML", "CSS", "JS", "WORDPRESS"],
-    "picture": "http://i68.tinypic.com/2wfnzet.png"
+    "biopic": "http://i68.tinypic.com/2wfnzet.png"
 };
 
 var education = {
     "schools": [
         {
             "name": "Maristes Sabadell",
-            "city": "Sabadell, Barcelona, Spain",
+            "location": "Sabadell, Barcelona, Spain",
             "degree": "Primary and secondary education",
             "majors": ["Technology", "English"],
             "dates": "From 1994 to 2007 ",
@@ -65,7 +65,7 @@ var education = {
         },
         {
             "name": "Jaume Viladoms",
-            "city": "Sabadell, Barcelona, Spain",
+            "location": "Sabadell, Barcelona, Spain",
             "degree": "Bachelor",
             "majors": ["Economics"],
             "dates": "From 2007 to 2009 ",
@@ -73,7 +73,7 @@ var education = {
         },
         {
             "name": "Universitat Autònoma de Barcelona",
-            "city": "Cerdanyola del Vallès, Barcelona, Spain",
+            "location": "Cerdanyola del Vallès, Barcelona, Spain",
             "degree": "Sociology Degree",
             "majors": ["Politics", "Sociology"],
             "dates": "From 2009 to 2011 ",
@@ -81,11 +81,19 @@ var education = {
         },
         {
             "name": "Escoles Univesitàries Gimbernat",
-            "city": "Sant Cugat del Vallès, Barcelona, Spain",
+            "location": "Sant Cugat del Vallès, Barcelona, Spain",
             "degree": "IT and Services Degree",
             "majors": ["BPM", "Software Engineering"],
             "dates": "From 2011 to 2016 ",
             "url": "http://www.eug.es/"
+        }
+    ],
+    "onlineCourses": [
+        {
+            "title": "Nanodegree Front-End Developer",
+            "school": "Udacity",
+            "date": "2016",
+            "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
         }
     ]
 };
@@ -93,28 +101,31 @@ var education = {
 bio.display = function () {
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-    $("#header").prepend(formattedRole);
-    $("#header").prepend(formattedName);
-    
+    $("#header").prepend(formattedRole).prepend(formattedName);
+
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
     $("#topContacts").append(formattedMobile);
+    $("#footerContacts").append(formattedMobile);
     var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
     $("#topContacts").append(formattedEmail);
-    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.tiwtter);
-    $("#topContacts").append(formattedTwitter);    
+    $("#footerContacts").append(formattedEmail);
+    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    $("#topContacts").append(formattedTwitter);
+    $("#footerContacts").append(formattedTwitter);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    $("#topContacts").append(formattedLocation);  
-    
-    var formattedPicture = HTMLbioPic.replace("%data%", bio.picture);
-    $("#header").append(formattedPicture);  
+    $("#topContacts").append(formattedLocation);
+    $("#footerContacts").append(formattedLocation);
+
+    var formattedPicture = HTMLbioPic.replace("%data%", bio.biopic);
+    $("#header").append(formattedPicture);
     var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-    $("#header").append(formattedMessage);  
+    $("#header").append(formattedMessage);
 
 
 
     if (bio.skills.length > 0) {
         $("#header").append(HTMLskillsStart);
-        for (var skill in bio.skills){
+        for (var skill in bio.skills) {
             var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
             $("#skills").append(formattedSkill);
         }
@@ -179,11 +190,28 @@ education.display = function () {
         var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
         $(".education-entry:last").append(formattedDates);
 
-        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].city);
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
         $(".education-entry:last").append(formattedLocation);
 
         var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
         $(".education-entry:last").append(formattedMajor);
+
+    }
+
+    for (var onlineCourse in education.onlineCourses) {
+        $(".education-entry:last").append(HTMLonlineClasses);
+
+        var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+        $(".education-entry:last").append(formattedTitle);
+
+        var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
+        $(".education-entry:last").append(formattedSchool);
+        
+        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].date);
+        $(".education-entry:last").append(formattedDates);
+        
+        var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
+        $(".education-entry:last").append(formattedUrl);        
 
     }
 };
